@@ -22,13 +22,13 @@ class Album
   def set_artist_and_title!
     decoded = @name_string.gsub(/\342\200\223/u,"-")
     splitter = case decoded
-               when /:/
-                ':'
+               when /(:+)/
+                $1
                when /.+ \- .+/
                  '-'
                when /.+ \/ .+/
                 '/'
-               else
+               else # punt
                  ''
                end
 
