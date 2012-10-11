@@ -16,10 +16,6 @@ def start_webserver!(filename)
   server.start
 end
 
-task 's' do
-  start_webserver!('2012-10-09.html')
-end
-
 task :default => [:run]
 
 file 'run' => 'feeds.yml' do
