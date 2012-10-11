@@ -4,8 +4,8 @@ Uses Tomahawk and Last.FM to play songs from newsfeeds.
 
 Requirements
 ------------
-[Tomahawk Player](http://www.tomahawk-player.org/)
-Ruby 1.9.3
+* [Tomahawk Player](http://www.tomahawk-player.org/)
+* [Ruby 1.9.3](http://www.ruby-lang.org)
 
 HowTo
 ------
