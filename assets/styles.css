@@ -1,0 +1,49 @@
+body{
+  width: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.album{
+  margin: 10px;
+  display: inline-block;
+  width: 30%;
+  min-height: 64px;
+  height: 90px;
+  overflow:hidden;
+}
+
+.album:hover {
+  background-color: lightblue;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.links {
+  padding-left: 70px;
+}
+
+.links a{
+  padding-right: 5px;
+}
+
+.categories {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+img.cover {
+  float: left;
+  padding-right: 5px;
+  width: 64px;
+  height: 64px;
+}
