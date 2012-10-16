@@ -14,6 +14,8 @@ HowTo
     rake
     # opens a browser with the results
     # Edit `feeds.yml` to customize which music blogs to use.
+    # Optionally, pass the number of days to look back (default is 2)
+    rake run[7]
 
 Details
 -------

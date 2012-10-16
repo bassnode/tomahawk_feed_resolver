@@ -18,18 +18,19 @@ end
 
 task :default => [:run]
 
-file 'run' => 'feeds.yml' do
+task :run, :days do |task, args|
   sources = YAML.load_file('feeds.yml')['feeds']
   albums = []
+  days = args[:days] || 2
   filename = "#{Date.today.to_s}.html"
 
   sources.each do |src|
-    puts "Pulling #{src}"
+    puts "Pulling #{days} days from #{src}"
 
     feed = Nokogiri::XML(open(src))
     feed.xpath('//item').each do |album|
       pub_date =  Date.parse(album.xpath('pubDate').text)
-      if pub_date >= Date.today - 2
+      if pub_date >= Date.today - days.to_i
         albums << Album.new(album)
       end
     end
