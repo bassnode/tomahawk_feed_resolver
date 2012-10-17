@@ -55,6 +55,7 @@ class Album
         <div>#{published_on.strftime('%b %d %I:%M%p %Z')}</div>
         <div class="categories">#{categories.first(3).join(' / ')}</div>
         <div class="links">
+          <i class="icon-headphones"></i>
           <a href="#{tomahawk_link}">Album</a>
         </div>
       </div>
