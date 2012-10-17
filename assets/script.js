@@ -8,7 +8,7 @@ function getArtwork(element){
 
   $.getJSON(url, null, function(data){
     if(data.album) {
-      var img = data.album.image[1]['#text'];
+      var img = data.album.image[2]['#text'];
       $('img.cover', element).attr('src', img);
 
       // Add the first track name if we can

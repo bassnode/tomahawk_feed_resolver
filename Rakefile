@@ -44,13 +44,13 @@ task :run, :days do |task, args|
     <head>
       <title>Choons</title>
 
-      <link href="assets/styles.css" media="screen" rel="stylesheet" type="text/css" />
       <link href="assets/bootstrap.min.css" rel="stylesheet">
+      <link href="assets/styles.css" media="screen" rel="stylesheet" type="text/css" />
     </head>
     <body>
 
-      <div id="albums">
-      #{albums.sort_by(&:published_on).reverse.map(&:to_html).join}
+      <div id="albums" class="container-fluid">
+      #{Album.to_html(albums)}
       </div>
 
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
