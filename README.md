@@ -2,6 +2,12 @@ Tomahawk Feed Resolver
 ======================
 Uses Tomahawk and Last.FM to play songs from newsfeeds.
 
+Why?
+----
+If like me, you get tired of scrolling through your feed reader and using some external tool to search
+each new album release, you'll dig this.  It allows you to see all the albums, their artwork and tracklisting.
+With a single click you can start listening.  Another click to read the original article, download, buy, etc.
+
 Requirements
 ------------
 * [Tomahawk Player](http://www.tomahawk-player.org/)
