@@ -45,8 +45,7 @@ task :run, :days do |task, args|
       <title>Choons</title>
 
       <link href="assets/styles.css" media="screen" rel="stylesheet" type="text/css" />
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-      <script src="assets/script.js" type="text/javascript"></script>
+      <link href="assets/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
 
@@ -54,6 +53,9 @@ task :run, :days do |task, args|
       #{albums.sort_by(&:published_on).reverse.map(&:to_html).join}
       </div>
 
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+      <script src="assets/bootstrap.min.js"></script>
+      <script src="assets/script.js" type="text/javascript"></script>
     </body>
     </html>
     }

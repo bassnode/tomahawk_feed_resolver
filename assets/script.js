@@ -13,13 +13,28 @@ function getArtwork(element){
 
       // Add the first track name if we can
       if(data.album.tracks.track) {
-        var firstTrack = data.album.tracks.track[0];
-        var href = "tomahawk://search/?artist=" +
-                    encodeURIComponent(firstTrack.artist.name) +
-                    "&title=" +
-                    encodeURIComponent(firstTrack.name);
-        var a = $('<a/>', {href: href}).text('Single');
-        a.appendTo($('.links', element));
+        var ol = $('<ol>');
+
+        $.each(data.album.tracks.track, function(id, track){
+          var href = "tomahawk://search/?artist=" +
+                      encodeURIComponent(artist) +
+                      "&title=" +
+                      encodeURIComponent(track.name);
+          var a = $('<a/>', {href: href}).text(track.name);
+          $('<li>').html(a).appendTo(ol);
+        });
+
+        var mouseOver = $('<a/>', {href: 'javascript:;', class: 'tracklist'}).text('Tracks')
+        var olContent = $('<div>').append(ol.clone()).remove().html();
+        mouseOver.popover({
+                            title: data.album.name,
+                            html: true,
+                            content: olContent,
+                            trigger: 'hover',
+                            delay: { hide: 1500 }
+        });
+
+        $('.links', element).append(mouseOver);
       }
     }
   });

@@ -3,7 +3,7 @@
 .bundle
 .config
 coverage
-InstalledFiles
+.DS_Store
 lib/bundler/man
 pkg
 rdoc
