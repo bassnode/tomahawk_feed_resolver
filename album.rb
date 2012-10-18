@@ -10,18 +10,28 @@ class Album
   def initialize(element)
     @name_string = element.xpath('title').text
     @description = element.xpath('description').text
-    @categories = element.xpath('category').map(&:text)
     @source_link = element.xpath('link').text
+    @categories = element.xpath('category').map(&:text)
     offset_date = DateTime.parse(element.xpath('pubDate').text).to_time
     @published_on = offset_date + offset_date.utc_offset
 
     set_artist_and_title!
+    filter_categories!
+  end
+
+  # Remove the artist and album name from @categories
+  def filter_categories!
+    fluff = ['ep', 'single', 'album', artist, title].map(&:downcase)
+    categories.reject!{ |cat| fluff.include? cat.downcase }
   end
 
   # This could be smarter, but for now it works in most cases.
   def set_artist_and_title!
-    decoded = @name_string.gsub(/\342\200\223/u,"-")
+    # Replace &#8211; char with something we can match on below
+    decoded = @name_string.gsub(/\342\200\223/u,"^^")
     splitter = case decoded
+               when /\^\^/
+                 '^^'
                when /(:+)/
                 $1
                when /.+ \- .+/

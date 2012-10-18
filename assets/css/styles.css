@@ -6,11 +6,7 @@ body {
   margin-bottom: 10px;
 }
 
-.album:hover {
-  background-color: lightblue;
-}
-
-ol.tracks{
+ol.tracks {
   display:none;
   border: 1px solid #ccc;
 }
