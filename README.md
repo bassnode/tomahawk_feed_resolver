@@ -32,4 +32,4 @@ and it finds that song searching both your local music collection as well as a m
 
 Screenshot
 ----------
-![Screenshot](assets/img/screen.png "Screenshot")
+![Screenshot](https://raw.github.com/bassnode/tomahawk_feed_resolver/master/assets/img/screen.png "Screenshot")
