@@ -4,8 +4,8 @@ Uses Tomahawk and Last.FM to play songs from newsfeeds.
 
 Why?
 ----
-If like me, you get tired of scrolling through your feed reader and using some external tool to search
-each new album release, you'll dig this.  It allows you to see all the albums, their artwork and tracklisting.
+If like me, you get tired of scrolling through your feed reader and using some external tool to listen to
+each new album release, you'll dig this.  It allows you to view all the albums on one page along with their artwork and tracklisting.
 With a single click you can start listening.  Another click to read the original article, download, buy, etc.
 
 Requirements
@@ -29,3 +29,7 @@ This script reads the RSS feeds listed in `feeds.yml` and pulls down the last 2 
 It generates an HTML page containing Tomahawk links to either the whole album or a single track from it (if available).
 If you're not familiar with Tomahawk, read their website for how it works.  In short, you tell it what you want to listen to
 and it finds that song searching both your local music collection as well as a myriad of web-based sources (Soundcloud, Youtube, etc.).
+
+Screenshot
+----------
+![Screenshot](/assets/img/screen.png "Screenshot")
