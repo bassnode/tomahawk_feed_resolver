@@ -45,7 +45,7 @@ task :run, :days do |task, args|
       <title>Choons</title>
 
       <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-      <link href="assets/css/styles.css" media="screen" rel="stylesheet" type="text/css" />
+      <link href="assets/css/styles.css" media="screen" rel="stylesheet">
     </head>
     <body>
 
@@ -53,7 +53,7 @@ task :run, :days do |task, args|
       #{Album.to_html(albums)}
       </div>
 
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+      <script src="assets/js/jquery.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
       <script src="assets/js/script.js" type="text/javascript"></script>
     </body>

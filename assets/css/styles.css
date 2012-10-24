@@ -4,6 +4,7 @@ body {
 
 .album{
   margin-bottom: 10px;
+  border: 1px solid #9DA0A4;
 }
 
 ol.tracks {

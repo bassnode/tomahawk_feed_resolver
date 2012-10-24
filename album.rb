@@ -54,9 +54,10 @@ class Album
     TOMAHAWK_URL % [enc(artist), enc(title)]
   end
 
-  def to_html(width=4)
+  def to_html(index=0)
+    day = published_on.day
     <<-HTML
-      <div class="album span#{width}">
+      <div class="album span3" data-colindex="#{index}">
         <a href="http://anonym.to/?#{source_link}" target="_blank">
           <img src="http://placehold.it/131x131" class="cover" title="Original link to #{@name_string}"/>
         </a>
@@ -78,18 +79,20 @@ class Album
   end
 
   # @param [Array<Album>] the Albums to display
-  # @param [Fixnum] (4) the number of albums to show per row
   # @return [String] the complete HTML
-  def self.to_html(albums, columns=4)
-    width = (12.0 / columns).floor
+  def self.to_html(albums)
     html = ''
+    columns = 4
+
     albums.sort_by(&:published_on).reverse.each_slice(columns) do |group|
       html << '<div class="row-fluid">'
-      group.each do |album|
-        html << album.to_html(width)
+      group.each_with_index do |album, index|
+        html << album.to_html(index)
       end
+
       html << '</div>'
     end
     html
   end
+
 end

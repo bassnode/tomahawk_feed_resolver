@@ -31,6 +31,7 @@ function getArtwork(element){
                             html: true,
                             content: olContent,
                             trigger: 'hover',
+                            placement: function(){ return $(element).data('colindex') < 3 ? 'right' : 'left'; },
                             delay: { hide: 1500 }
         });
 
