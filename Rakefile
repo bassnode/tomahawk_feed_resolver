@@ -23,10 +23,17 @@ end
 
 task :default => [:run]
 
-task :run, :days do |task, args|
+file 'feeds.yml' => 'feeds.yml.example' do
+  cp 'feeds.yml.example', 'feeds.yml'
+end
+
+desc <<-EOM
+  Pulls 2 days of listings from everything in feeds.yml Set DAYS env. variable to lengthen date range.
+EOM
+task :run => 'feeds.yml' do |t|
   sources = YAML.load_file('feeds.yml')['feeds']
   albums = []
-  days = args[:days] || 2
+  days = ENV['DAYS'] || 2
   filename = "#{Date.today.to_s}.html"
 
   sources.each do |src|
