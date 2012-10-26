@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'nokogiri'
 require 'open-uri'
-require 'date'
+require 'time'
 require 'yaml'
 require 'webrick'
 require './album'
@@ -34,15 +34,15 @@ task :run => 'feeds.yml' do |t|
   sources = YAML.load_file('feeds.yml')['feeds']
   albums = []
   days = ENV['DAYS'] || 2
-  filename = "#{Date.today.to_s}.html"
+  today = Time.now
+  filename = "#{today.strftime('%Y-%m-%d')}.html"
 
   sources.each do |src|
     puts "Pulling #{days} days from #{src}"
-
     feed = Nokogiri::XML(open(src))
     feed.xpath('//item').each do |album|
-      pub_date =  Date.parse(album.xpath('pubDate').text)
-      if pub_date >= Date.today - days.to_i
+      pub_date =  Time.parse(album.xpath('pubDate').text)
+      if pub_date >= today - days.to_i * 86400
         albums << Album.new(album)
       end
     end
