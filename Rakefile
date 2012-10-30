@@ -10,9 +10,14 @@ def start_webserver!(filename)
   root = File.expand_path '.'
   port = 9999
   server = WEBrick::HTTPServer.new :Port => port, :DocumentRoot => root
-  trap('INT') { server.shutdown }
 
-  fork{ `sleep 1; open http://localhost:#{port}/#{filename}` }
+  pid = fork{ `sleep 1; open http://localhost:#{port}/#{filename}` }
+
+  trap('INT') do
+    server.shutdown
+    Process.detach(pid)
+  end
+
   server.start
 end
 
