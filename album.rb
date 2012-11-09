@@ -21,7 +21,7 @@ class Album
 
   # Remove the artist and album name from @categories
   def filter_categories!
-    fluff = ['ep', 'single', 'album', artist, title].map(&:downcase)
+    fluff = ['ep', 'single', 'album', 'archive', artist, title].map(&:downcase)
     categories.reject!{ |cat| fluff.include? cat.downcase }
   end
 
