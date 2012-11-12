@@ -37,17 +37,29 @@ task :run => 'feeds.yml' do |t|
   today = Time.now
   filename = "#{today.strftime('%Y-%m-%d')}.html"
 
+  tg = ThreadGroup.new
+  mutex = Mutex.new
+
   sources.each do |src|
-    puts "Pulling #{days} days from #{src}"
-    feed = Nokogiri::XML(open(src))
-    feed.xpath('//item').each do |album|
-      pub_date =  Time.parse(album.xpath('pubDate').text)
-      if pub_date >= today - days.to_i * 86400
-        albums << Album.new(album)
+    t = Thread.new do
+      puts "Pulling #{src}\n"
+      feed = Nokogiri::XML(open(src))
+
+      feed.xpath('//item').each do |album|
+        pub_date =  Time.parse(album.xpath('pubDate').text)
+
+        if pub_date >= today - days.to_i * 86400
+          mutex.synchronize do
+            albums << Album.new(album)
+          end
+        end
       end
     end
+
+    tg.add(t)
   end
 
+  tg.list.each(&:join)
 
   File.open(filename, "w+") do |f|
     f.puts %Q{
