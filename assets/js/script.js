@@ -73,7 +73,7 @@ function getArtwork(element) {
                             delay: { hide: 1500 }
         });
 
-        $('.links', element).append(mouseOver);
+        $('.links', element).prepend(mouseOver);
       }
     } else {
       // The album query returned nothing, so try artist

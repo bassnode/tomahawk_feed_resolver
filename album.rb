@@ -4,6 +4,8 @@ require 'date'
 class Album
 
   TOMAHAWK_URL = "tomahawk://view/album?artist=%s&name=%s"
+  YOUTUBE_URL = "https://www.youtube.com/results?search_query=%s-%s"
+
   attr_accessor :artist, :title, :description, :categories, :source_link, :published_on
 
   # @param [Nokogiri::XML::Element]
@@ -54,6 +56,10 @@ class Album
     TOMAHAWK_URL % [enc(artist), enc(title)]
   end
 
+  def youtube_link
+    YOUTUBE_URL % [enc(artist), enc(title)]
+  end
+
   def to_html(index=0)
     day = published_on.day
     <<-HTML
@@ -68,6 +74,7 @@ class Album
         <div class="links">
           <i class="icon-headphones"></i>
           <a href="#{tomahawk_link}">Album</a>
+          <a href="#{youtube_link}" target="_blank">YouTube</a>
         </div>
       </div>
     HTML
