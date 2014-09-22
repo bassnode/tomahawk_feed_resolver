@@ -61,7 +61,6 @@ class Album
   end
 
   def to_html(index=0)
-    day = published_on.day
     <<-HTML
       <div class="album span3" data-colindex="#{index}">
         <a href="http://anonym.to/?#{source_link}" target="_blank">
@@ -81,8 +80,7 @@ class Album
   end
 
   def enc(str)
-    @parser ||= URI::Parser.new
-    @parser.escape(str)
+    URI.encode_www_form_component(str)
   end
 
   # @param [Array<Album>] the Albums to display
