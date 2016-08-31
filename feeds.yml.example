@@ -1,4 +1,5 @@
 feeds:
+  - https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/justadded/sf=143441/limit=25/explicit=true/rss.xml
   - http://www.junodownload.com/all/feeds/rss/
   - http://pitchfork.com/rss/reviews/albums/
   - http://addictechnews.blogspot.com/feeds/posts/default?alt=rss

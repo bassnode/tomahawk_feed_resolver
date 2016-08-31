@@ -63,7 +63,7 @@ class Album
   def to_html(index=0)
     <<-HTML
       <div class="album span3" data-colindex="#{index}">
-        <a href="http://anonym.to/?#{source_link}" target="_blank">
+        <a href="#{source_link}" target="_blank">
           <img src="http://placehold.it/131x131" class="cover" title="Original link to #{@name_string}"/>
         </a>
         <div class="bold artist">#{artist}</div>
